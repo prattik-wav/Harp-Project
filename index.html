@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Harmonica</title>
+    <link rel="stylesheet" href="harmonstyle.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">Virtual Harp</div>
+        <div class="nav-links">
+            <a href="#" onclick="showSection('play')">HARMONICA</a>
+            <a href="#" onclick="showSection('how')">HOW TO PLAY</a>
+            <a href="#" onclick="showSection('about')">ABOUT ME</a>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <section id="play-section" class="active">
+            <h1 id="har_title">HARMONICA DIATONIC ENGINE</h1>
+            
+        <div class="controls-wrapper">
+            <div class="fx-rack">
+                <div class="param">
+                    <label>OCTAVE</label>
+                    <div class="button-group">
+                        <button type="button" onclick="setOctave(-1)">LOW</button>
+                        <button type="button" id="oct-mid" class="active" onclick="setOctave(0)">MID</button>
+                        <button type="button" onclick="setOctave(1)">HIGH</button>
+                    </div>
+                </div>
+
+                <div class="param">
+                    <label>TRANSPOSE</label>
+                    <select id="transpose-select" onchange="updateTranspose()">
+                        <option value="-5">G</option>
+                        <option value="-4">Ab</option>
+                        <option value="-3">A</option>
+                        <option value="-2">Bb</option>
+                        <option value="-1">B</option>
+                        <option value="0" selected>C (Default)</option>
+                        <option value="1">Db</option>
+                        <option value="2">D</option>
+                        <option value="3">Eb</option>
+                        <option value="4">E</option>
+                        <option value="5">F</option>
+                        <option value="6">F#</option>
+                    </select>
+                </div>
+
+                <div class="param">
+                    <label>REVERB</label>
+                    <button type="button" id="reverb-toggle" onclick="toggleReverb()">OFF</button>
+                </div>
+            </div>
+        </div>
+
+            <div class="instrument-frame">
+                <div id="harmonica-grid" class="harmonica"></div>
+            </div>
+            
+            <div class="mapping-hint">
+                <p>> BLOW_KEYS: [ Q W E R T Y U I O P ]</p>
+                <p>> DRAW_KEYS: [ A S D F G H J K L ; ]</p>
+            </div>
+        </section>
+
+        <section id="how-section">
+            <h2>HOW TO PLAY</h2>
+            <div class="info-card">
+                <p><strong>1 Start Playing</strong>
+                    The harmonium loads automatically. Press keys on your keyboard or click the on-screen keys to play notes.
+                </p>
+                <p><strong>2 Learn the Keys</strong>
+                White keys map to S, `, Q–P, [, ], \, and ;. Black keys use A, 1, 2, 4, 5, 7, 8, 9, -, =, and '. The visual keyboard shows which notes you're playing.
+                </p>
+                <p><strong>3 Customize Sound</strong>
+                    Use the controls to add reverb, change octaves, transpose, or stack reeds for different sounds.
+                </p>
+                <p>This engine uses <strong>Subtractive Synthesis</strong> to mimic physical reeds. Blow notes (exhale) are mapped to the top row, while Draw notes (inhale) are mapped to the home row to allow for rapid chord transitions.</p>
+            </div>
+        </section>
+
+        <section id="about-section">
+            <h2>DEVELOPER_LOG</h2>
+            <div class="info-card">
+                <p><strong>Focus:</strong> AI & Machine Learning / CSE Engineering</p>
+                <p>Developing interactive web systems through Digital Signal Processing, or atleast trying to.
+                   Appreciate the support!
+                </p>
+                <div class="social-links">
+                    <a href="https://github.com/prattik-wav">GITHUB</a> | <a href="https://www.linkedin.com/in/prattikdev">LINKEDIN</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="overlay-footer">
+        <div class="footer-content">
+            MADE WITH <span class="heart">❤️</span> BY PRATTIK
+        </div>
+    </footer>
+
+    <script src="harmonScript.js"></script>
+</body>
+</html>

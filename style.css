@@ -1,0 +1,175 @@
+body {
+    background-color: #050505;
+    background-image: radial-gradient(circle at center, #111827 0%, #050505 100%);
+    color: #00ff41; /* Terminal Green */
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    background: rgba(0,0,0,0.8);
+    border-bottom: 1px solid #222;
+}
+
+nav a { color: #00ff41; text-decoration: none; font-size: 12px; margin-left: 20px; letter-spacing: 1px; }
+
+.main-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+section { display: none; width: 90%; max-width: 1000px; text-align: center; }
+section.active { display: block; animation: fadeIn 0.3s ease-in; }
+
+#har_title { font-style: normal; font-weight: bold; letter-spacing: 4px; margin-bottom: 30px; }
+
+.fx-rack {
+    display: inline-flex;
+    gap: 40px;
+    background: #111;
+    padding: 15px 30px;
+    border: 1px solid #333;
+    margin-bottom: 30px;
+}
+
+.param label { display: block; font-size: 10px; color: #555; margin-bottom: 5px; }
+
+.instrument-frame {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 40px;
+    border: 1px solid #1a1a1a;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.harmonica { display: flex; gap: 8px; }
+
+.hole {
+    width: 55px;
+    height: 180px;
+    background: #000;
+    border: 1px solid #222;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px 0;
+    transition: 0.1s;
+}
+
+.key-label { font-size: 18px; font-weight: bold; color: #00ff41; }
+.note-name { font-size: 10px; color: #333; }
+.hole-num { font-size: 9px; color: #555; }
+
+.hole.blow-active { background: #00ff41; color: #000; box-shadow: 0 0 20px #00ff41; }
+.hole.draw-active { background: #ff3e3e; color: #000; box-shadow: 0 0 20px #ff3e3e; }
+.hole.blow-active .key-label, .hole.draw-active .key-label { color: #000; }
+
+.info-card { background: #111; padding: 30px; border: 1px solid #222; line-height: 1.6; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Keeps everything stacked and centered */
+.controls-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.fx-rack {
+    display: flex; /* Changed from inline-flex to flex */
+    gap: 30px;
+    background: #111;
+    padding: 15px 25px;
+    border: 1px solid #333;
+    align-items: center;
+}
+
+.button-group {
+    display: flex;
+    gap: 5px;
+}
+
+/* Button & Select Styling */
+.fx-rack button, .fx-rack select {
+    background: #000;
+    border: 1px solid #00ff41;
+    color: #00ff41;
+    padding: 6px 12px;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.fx-rack button.active {
+    background: #00ff41;
+    color: #000;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.4);
+}
+
+.fx-rack select {
+    outline: none;
+    appearance: none; /* Removes default browser arrow for a cleaner look */
+    padding-right: 20px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="green"><polygon points="0,0 10,0 5,5"/></svg>') no-repeat 90% center;
+}
+
+/* Overlay Footer Styling */
+.overlay-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(5, 5, 5, 0.9); /* Slight transparency */
+    backdrop-filter: blur(5px); /* Modern blur effect */
+    border-top: 1px solid #1a1a1a;
+    padding: 12px 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content {
+    color: #00ff41;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    /* Neon Glow */
+    text-shadow: 
+        0 0 5px rgba(0, 255, 65, 0.8),
+        0 0 10px rgba(0, 255, 65, 0.5),
+        0 0 20px rgba(0, 255, 65, 0.3),
+        0 0 40px rgba(0, 255, 65, 0.1);
+}
+
+.heart {
+    display: inline-block;
+    color: #ff3e3e; /* Red heart to pop against the green */
+    text-shadow: 0 0 10px rgba(255, 62, 62, 0.6);
+    animation: heartbeat 1.5s ease-in-out infinite;
+    margin: 0 5px;
+}
+
+/* Animations */
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Ensure main content doesn't get hidden behind footer */
+body {
+    padding-bottom: 60px;
+}
+
