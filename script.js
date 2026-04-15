@@ -52,7 +52,7 @@ function startNote(key) {
     const osc = audioCtx.createOscillator();
     const gain = audioCtx.createGain();
     
-    // --- FIX 1: CALCULATION ---
+    // --- CALCULATION ---
     // Ensure currentOctave and transposeValue are picked up live
     const pitchAdjust = Math.pow(2, transposeValue / 12);
     osc.frequency.value = data.f * currentOctave * pitchAdjust;
@@ -61,7 +61,7 @@ function startNote(key) {
     gain.gain.setValueAtTime(0, audioCtx.currentTime);
     gain.gain.linearRampToValueAtTime(0.2, audioCtx.currentTime + 0.05);
 
-    // --- FIX 2: ROUTING ---
+    // --- ROUTING ---
     if (reverbEnabled) {
         const delay = audioCtx.createDelay();
         const feedback = audioCtx.createGain();
